@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+To change the arguments when running through command line type:
+      roslaunch node_template play.launch 
+-->
+
+<launch>
+	<node
+	        pkg="rosbag"
+	        type="play"
+	        name="play_teleop_node"
+	        args="-d 15 -r 0.05 $(find test)/teleop.bag"
+	>     		
+	</node>
+	<include file="$(find test)/launch/simple_node.launch">
+	        <arg name="param1" value="1.0" />
+	        <arg name="param2"    value="0.5" />
+	</include>
+
+</launch>
+

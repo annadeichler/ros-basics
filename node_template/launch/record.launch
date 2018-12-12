@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+To change the arguments when running through command line type:
+      roslaunch node_template record.launch 
+-->
+
+<launch>
+	<node
+	        pkg="rosbag"
+	        type="record"
+	        name="record_teleop_node"
+	        args="-O $(find test)/teleop.bag /turtle1/cmd_vel"
+	>     		
+	</node>
+	<include file="$(find test)/launch/simple_node.launch">
+	        <arg name="throttle" value="1.0" />
+	        <arg name="steer"    value="0.5" />
+	</include>
+
+</launch>
+

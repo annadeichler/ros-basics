@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+To change the arguments when running through command line type:
+      roslaunch node_template simple_node.launch param1:=1.0 param2:=0.5
+-->
+
+<launch>
+<arg name="param1"  default="1.0"/>
+<arg name="param2"     default="0.5"/>
+   		
+   	<node
+		pkg="turtlesim"
+		type="turtle_teleop_key"
+		name="teleop_key"
+	/>
+	<node
+		pkg="test"
+		type="simple_node_node"
+		name="simple_node_node"
+		output="screen">
+		<param name="param1"	value="$(arg param1)" />		 
+   		<param name="param2"	value="$(arg param2)" />
+		
+	</node>
+       
+	<include file="$(find additional_package)/launch/simulation.launch">
+		<arg name="gazebo_gui" value="false" />
+		<arg name="world_name" value="world" />
+		<arg name="rviz" value="true" />
+	</include>
+
+</launch>
+
+
